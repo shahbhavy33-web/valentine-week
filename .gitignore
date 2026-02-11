@@ -1,0 +1,12 @@
+# Node & environment
+node_modules/
+.env
+
+# Local artifacts
+valentine.db
+ValentineWeek_Template.zip
+
+# OS/IDE files
+.DS_Store
+.vscode/*
+!.vscode/launch.json

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- © 2026 Valentine's Week Template. All Rights Reserved. Redistribution prohibited. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Week Celebration 2026 | Love Calculator & Greetings</title>
+  
+  <!-- SEO & Open Graph Meta Tags (Essential for Social Sharing) -->
+  <meta name="description" content="Celebrate Valentine's Week 2026 with our interactive Love Calculator, Romantic Gift Suggestions, and 3D Love Letter Generator. The perfect digital gift for your partner.">
+  <meta property="og:title" content="Valentine's Week Celebration 2026 💖">
+  <meta property="og:description" content="Check your Love Score, get gift ideas, and send AI love letters! 💌">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:url" content="https://your-website-url.com">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div id="bg-3d" class="bg-hearts-container"></div>
+
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Celebrate Love 💖</h1>
+      <p>From Valentine's Week to Acts of Kindness</p>
+      
+      <!-- Countdown Timer -->
+      <div id="countdown" class="countdown-container">
+        <div class="time-box">
+          <span id="days">00</span>
+          <small>Days</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span>
+          <small>Hours</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <small>Mins</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <small>Secs</small>
+        </div>
+      </div>
+
+      <a href="#week" class="btn">Explore the Week</a>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#week">Valentine Week</a></li>
+      <li><a href="#calculator">Love Calculator</a></li>
+      <li><a href="#letter">Love Letter</a></li>
+      <li><a href="#activist">Love Activist</a></li>
+      <li><a href="#gifts">Gift Ideas</a></li>
+    </ul>
+  </nav>
+
+  <section id="week" class="container">
+    <h2>📅 Valentine's Week Schedule</h2>
+    <div class="timeline">
+      <div class="day-card" onclick="showDetails('rose')">
+        <h3>Feb 7</h3>
+        <span>🌹 Rose Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('propose')">
+        <h3>Feb 8</h3>
+        <span>💍 Propose Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('chocolate')">
+        <h3>Feb 9</h3>
+        <span>🍫 Chocolate Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('teddy')">
+        <h3>Feb 10</h3>
+        <span>🧸 Teddy Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('promise')">
+        <h3>Feb 11</h3>
+        <span>🤞 Promise Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('hug')">
+        <h3>Feb 12</h3>
+        <span>🤗 Hug Day</span>
+      </div>
+      <div class="day-card" onclick="showDetails('kiss')">
+        <h3>Feb 13</h3>
+        <span>💋 Kiss Day</span>
+      </div>
+      <div class="day-card highlight" onclick="showDetails('valentine')">
+        <h3>Feb 14</h3>
+        <span>❤️ Valentine's Day</span>
+      </div>
+    </div>
+    <div id="day-details" class="details-box hidden">
+      <h3 id="detail-title"></h3>
+      <p id="detail-desc"></p>
+      <div id="detail-quote" class="quote-box"></div>
+      
+      <div class="activity-section">
+        <h4>✨ Choose Your Vibe ✨</h4>
+        <div class="activity-toggle">
+          <button id="btn-classic" class="toggle-btn active" onclick="setVibe('classic')">🎻 Classic Romantic</button>
+          <button id="btn-genz" class="toggle-btn" onclick="setVibe('genz')">🛹 Gen-Z Style</button>
+        </div>
+        <div id="activity-content" class="activity-content">
+          <!-- Content will be injected here -->
+        </div>
+      </div>
+      
+      <!-- Character Animation Stage -->
+      <div id="scenario-stage" class="scenario-stage"></div>
+
+      <button onclick="closeDetails()">Close</button>
+    </div>
+  </section>
+
+  <!-- Container for Animations -->
+  <div id="animation-layer" class="animation-container"></div>
+
+  <section id="gifts" class="container section-bg">
+    <h2>🎁 Gift Suggestions</h2>
+    <div id="gift-grid" class="gift-grid">
+      <!-- Gifts will be injected here by JS -->
+    </div>
+  </section>
+
+  <section id="calculator" class="container section-bg">
+    <h2>💘 Love Calculator</h2>
+    <div class="tool-box">
+      <input id="name1" placeholder="Your Name">
+      <input id="name2" placeholder="Partner's Name">
+      <textarea id="desc" placeholder="Describe this person (e.g., sweet, funny)..." rows="3"></textarea>
+      <button onclick="calculate()">Check Compatibility</button>
+      <div id="result" class="result-display"></div>
+      <button id="share-calc-btn" class="share-btn hidden" onclick="shareCalculator()">Share on WhatsApp 💚</button>
+    </div>
+  </section>
+
+  <section id="letter" class="container">
+    <h2>💌 AI Love Letter Generator</h2>
+    <div class="tool-box">
+      <input id="partner" placeholder="Partner's Name">
+      <button onclick="generateLetter()">Write a Letter</button>
+      <pre id="letter-output" class="letter-box hidden"></pre>
+      <button id="share-letter-btn" class="share-btn hidden" onclick="shareLetter()">Share on WhatsApp 💚</button>
+    </div>
+  </section>
+
+  <section id="activist" class="container activist-section">
+    <h2>📢 Love Activist: Spread the Love</h2>
+    <p>Love isn't just about romance; it's about kindness. Take a pledge today!</p>
+    <div class="grid missions">
+      <div class="mission-card" onclick="toggleMission(this)">
+        <h3>🤝 Help a Stranger</h3>
+        <p>Do one random act of kindness today.</p>
+      </div>
+      <div class="mission-card" onclick="toggleMission(this)">
+        <h3>📞 Call a Loved One</h3>
+        <p>Call someone you haven't spoken to in a while.</p>
+      </div>
+      <div class="mission-card" onclick="toggleMission(this)">
+        <h3>🌱 Plant a Tree</h3>
+        <p>Show love to the planet.</p>
+      </div>
+      <div class="mission-card" onclick="toggleMission(this)">
+        <h3>🐾 Feed a Stray</h3>
+        <p>Share love with animals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sales Section for Template -->
+  <section id="buy-template" class="container sales-section">
+    <div class="glass-card premium-offer">
+      <div class="offer-badge">Limited Time Offer</div>
+      <h2>✨ Want a Website Like This?</h2>
+      <p>Get this <strong>Premium Valentine's Website Template</strong> for your loved one or business!</p>
+      <ul class="feature-list">
+        <li>💖 3D Interactive Backgrounds</li>
+        <li>💌 AI Love Letter & Calculator</li>
+        <li>📱 Fully Mobile Responsive</li>
+        <li>⚡ Easy to Customize</li>
+      </ul>
+      <div class="price-tag">
+        <span class="original-price">₹2999</span>
+        <span class="current-price" id="display-price">₹1499</span>
+      </div>
+      <button class="buy-btn" onclick="buyTemplate()">
+        <span class="icon">🚀</span> Order Now on WhatsApp
+      </button>
+      <p class="small-text">*Instant Delivery of Source Code</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2026 Valentine's Week App. All Rights Reserved.</p>
+      <p class="small">Designed with ❤️ for couples everywhere.</p>
+      <!-- Add your contact info here for buyers -->
+      <!-- <p class="contact"><a href="mailto:contact@example.com">Contact Developer</a></p> -->
+    </div>
+  </footer>
+
+  <!-- Welcome Popup -->
+  <div id="welcome-popup" class="popup-overlay hidden">
+    <div class="popup-content">
+      <div class="popup-animation">💌</div>
+      <h2>Welcome to Valentine's Week! 💖</h2>
+      <p>Celebrate love, kindness, and joy with us.</p>
+      <button class="popup-btn" onclick="closePopup()">Let's Celebrate!</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="background3d.js"></script>
+</body>
+</html>
