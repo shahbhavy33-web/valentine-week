@@ -33,14 +33,6 @@ const CONFIG = {
   sharing: {
     calculator: "We checked our Love Score on the Valentine's App! 💘\n\n{result}\n\nCheck yours now!",
     letter: "💌 A Love Letter for you:\n\n{letter}\n\nGenerated with Valentine's App 💖"
-  },
-
-  // Sales/Developer Info (For selling this template)
-  sales: {
-    enabled: true, // Set to false to hide the sales section
-    whatsappNumber: "919512461393", // Updated number
-    price: "₹1999",
-    message: "Hi! I loved the Valentine Website Demo. I want to buy this template/website. 💖"
   }
 };
 
@@ -506,18 +498,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 500);
 
-  // Update Price from CONFIG (if element exists)
-  const priceEl = document.getElementById("display-price");
-  if (priceEl && CONFIG.sales && CONFIG.sales.price) {
-    priceEl.innerText = CONFIG.sales.price;
-  }
-
-  // Toggle Sales Section Visibility
-  const salesSection = document.getElementById("buy-template");
-  if (salesSection && CONFIG.sales && CONFIG.sales.enabled === false) {
-    salesSection.classList.add("hidden");
-  }
-
   // Start Countdown
   updateCountdown();
   setInterval(updateCountdown, 1000);
@@ -663,17 +643,6 @@ function toggleMission(element) {
   if (element.classList.contains("completed")) {
     alert("Thank you for spreading love! 💖");
   }
-}
-
-function buyTemplate() {
-  const phone = CONFIG.sales.whatsappNumber;
-  const message = CONFIG.sales.message;
-  if (!phone) {
-    alert("Please contact the developer directly!");
-    return;
-  }
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
 }
 
 function startBackgroundHearts() {
